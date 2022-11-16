@@ -1,0 +1,62 @@
+{% extends "newlayout.html" %}
+{% block content %}
+
+
+<div class="row justify-content-center" style="background-color: rgba(196, 196, 195, 0.141); padding-top: 20px; padding-bottom: 20px; border-radius: 25px;">
+    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+        <form class="mx-1 mx-md-4" method="post">
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input required type="text" name="username" placeholder="Enter username" class="form-control"
+                        value="{{ request.form['username'] }}" />
+                    
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input required type="email" name="email" placeholder="Enter email" class="form-control"
+                        value="{{ request.form['email'] }}" />
+                    
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input required type="password" name="password" placeholder="Enter password" class="form-control"
+                        value="{{ request.form['password'] }}" />
+                    
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input required type="password" name="password1" placeholder="Enter password again" class="form-control"
+                        value="{{ request.form['password1'] }}" />
+                    
+                </div>
+            </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+                <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.3rem; padding-right: 2.6rem; margin-left: 15px;">Register</button>
+                <p class="small fw-bold mt-2 pt-1 mb-0" style="margin-left: 15px;">Have an account? <a href="/login" class="link-danger" style="text-decoration: none;">Log
+                        In</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+        <img src="https://www.forbesindia.com/media/images/2017/Aug/img_98611_digital_banking_sm.jpg" style="border-radius: 25px; height: 400px;" class="img-fluid"
+            alt="Sample image">
+
+    </div>
+</div>
+
+
+{% endblock content %}

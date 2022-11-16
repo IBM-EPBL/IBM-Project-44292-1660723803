@@ -1,0 +1,105 @@
+{% extends "navblock.html" %}
+{% block content %}
+
+{%if expenseData%}
+<div class="column">
+        <table style="margin-left: auto;
+    margin-right: auto;" >
+    <h3 style="text-align: center;  text-decoration: underline;">Expenses</h3>
+    <tr>
+        <th>AMOUNT</th>
+        <th>CATEGORY</th>
+        <th>NEED</th>
+    </tr>
+    {%for item in expenseData%}
+    <tr>
+        {%for i in item.keys()%}
+        <td>{{item[i]}}</td>
+        {%endfor%}
+    </tr>
+    {%endfor%}
+    
+        <p style="text-align: center;"> </p>
+    
+</table>
+<button type="button" style="margin-left: auto; margin-right: auto; display: block; margin-bottom: 10px; border-radius: 25px; color:aliceblue; padding: 10px; background-color: rgb(72, 148, 247);" onclick="displayingDiv('expenseDiv')">Add Expense</button>
+</div>
+{%else%}
+<i>
+    <p style="text-align: center;">No Data yet</p>
+</i>
+{%endif%}
+<!-- income table -->
+
+<div class="column">
+{%if incomeData%}
+<table style="margin-left: auto;
+margin-right: auto;" >
+<h3 style="text-align: center;  text-decoration: underline;">Income</h3>
+    <tr>
+        <th>AMOUNT</th>
+    </tr>
+    {%for item in incomeData%}
+    <tr>
+        <td>{{item['AMOUNT']}}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+</div>
+{%else%}
+<i>
+    <p style="text-align: center;">No Data yet</p>
+</i>
+{%endif%}
+<br>
+
+<button type="button" style="margin-left: auto; margin-right: auto; display: block; margin-bottom: 10px; border-radius: 25px; color:aliceblue; padding: 10px; background-color: rgb(72, 148, 247);" onclick="displayingDiv('incomeDiv')">Add Income</button>
+<br>
+<br>
+<div id="expenseDiv" style="display:none;">
+    <form name="addexpenseForm" action="/addExpense/" method="post">
+        <label for="Amount">Enter the Expense Amount</label>
+        <input name="Amount" type="number" placeholder="Amount" step="0.01" min="0"><br>
+        <br>
+        <label for="Need/Want">Is it a need or a want?</label>
+        <select name="Need/Want" required>
+            <option value="TRUE">Need</option>
+            <option value="FALSE">Want</option>
+        </select><br>
+        <br>
+        <select name="category" id="category" class="form-control">
+            <option value="Miscellaneous" selected="selected">Select Category</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+            <option value="Food">Food</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Clothing">Clothing</option>
+            <option value="HouseHold">HouseHold</option>
+            <option value="Rent">Rent</option>
+            <option value="Bills and Taxes">Bills and Taxes</option>
+            <option value="Vacations">Vacations</option>
+        </select>
+        <!-- <input type="checkbox" name="options" id="education" value="education"> Education </input>
+        <input type="checkbox" name="options" id="entertainment" value="entertainment"> Entertainment
+        </input>
+        <input type="checkbox" name="options" id="travel" value="travel"> Travel </input>
+        <input type="checkbox" name="options" id="food" value="food"> Food </input>
+        <input type="checkbox" name="options" id="health" value="health"> Health </input>
+        <input type="checkbox" name="options" id="others" value="others"> Others </input> -->
+        <br><br>
+        <input type="submit">
+    </form>
+</div>
+
+<div id="incomeDiv" style="display:none;">
+    <form method="post" id="incomeForm" action="/addIncome/" method="post">
+        <label for="AmountIncome">Enter the Income Amount</label>
+        <input name="AmountIncome" type="number" placeholder="Amount" step="0.01" min="0"><br>
+        <br>
+        <input type="submit">
+        <br>
+    </form>
+</div>
+
+{% endblock content %}
