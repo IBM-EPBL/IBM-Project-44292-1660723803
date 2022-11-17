@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block basecontent %}
+<script src="{{url_for('static', filename='displaying.js')}}"></script>
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+        <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+                {%block nav%}
+                {%endblock nav%}
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{title}}</p>
+                {% block content %}
+                {% endblock content %}
+                <!-- To display any messages -->
+                <br>
+                <br>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                {% if message!="" %}
+                <div class="alert alert-info" role="alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock basecontent %}

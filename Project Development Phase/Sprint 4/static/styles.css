@@ -1,0 +1,34 @@
+th,
+td {
+    padding: 15px;
+}
+.inline-block-child {
+    display: inline-block;
+  }
+  .center {
+    line-height: 100px;
+    height: 100px;
+    text-align: center;
+  }
+
+.bgimg {
+  background-image: url("");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create a two-column layout */
+.column {
+  float: left;
+  width: 49.5%;
+  
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

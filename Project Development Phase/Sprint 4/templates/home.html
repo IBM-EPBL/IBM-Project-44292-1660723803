@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{%block basecontent%}
+<section class="vh-100" style="border-radius: 25px; background-color: rgba(253, 253, 253, 0.789);">
+    <div class="container h-100" style="position: relative;">
+        <div class="card text-black" style="border-radius: 25px; background-color: rgba(243, 243, 243, 0.633); ">
+            <div class="card-body p-md-5">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Budgetify</p>
+                
+                <p>Because once you go Budgetify, you have all your financial decisions sorted. You can use this app to manage your finances to make better financial decisions.</p>
+                <div class='parent'>
+                    <div class="center">
+                    <div class='child inline-block-child'><a href="/login"><button type="button" class="btn btn-primary btn-lg"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button></a><br></div>
+                    <div class='child inline-block-child'><a href="/register"><button type="button" class="btn btn-primary btn-lg"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button></a><br></div>
+                  </div></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock basecontent %}

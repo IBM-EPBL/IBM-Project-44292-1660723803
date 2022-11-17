@@ -1,0 +1,54 @@
+{% extends "navblock.html" %}
+{% block content %}
+
+{% if session.username %}
+<p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Welcome, {{ session.username }}.</p><br>
+<div style="background-color: rgba(235, 235, 235, 0.496); border-radius: 25px; margin-left: 480px; margin-right: 480px; padding-top: 15px; padding-bottom: 15px;">
+<p style="text-align: center;">Name: {{ session['username'] }}</p> 
+<p style="text-align: center;">Email: {{ session['email'] }}</p>
+<p style="text-align: center;">Budget: {{ session['budget'] }}</p>
+</div>
+<br>
+
+<button type="button" style="margin-left: auto; margin-right: auto; display: block; margin-bottom: 10px; border-radius: 25px;  color:aliceblue;padding: 10px; background-color: rgb(72, 148, 247);" onclick="displayingDiv('passDiv')">Change Password</button>
+{%if session.budget%}
+<button type="button" style="margin-left: auto; margin-right: auto; display: block; margin-bottom: 10px; border-radius: 25px;  color:aliceblue;padding: 10px; background-color: rgb(72, 148, 247);"  onclick="displayingDiv('budDiv')">Change Budget</button>
+{%else%}
+<button type="button"  style="margin-left: auto; margin-right: auto; display: block; margin-bottom: 10px; border-radius: 25px;  color:aliceblue;padding: 10px; background-color: rgb(72, 148, 247);" onclick="displayingDiv('addbudDiv')">Add Budget</button>
+{%endif%}
+
+<br>
+<br>
+<div id="passDiv" style="display:none;">
+    <form method="post" id="passwordChangeForm" action="/changePassword/" method="post">
+        <label for="pass1">Enter new password</label>
+        <input name="pass1" type="password" value="{{request.form['pass1']}}" placeholder="Password"><br><br>
+        <label for="pass2">Re-enter new password</label>
+        <input name="pass2" type="password" value="{{request.form['pass2']}}" placeholder="Re-enter Password"><br><br>
+        <input type="submit">
+        <br>
+    </form>
+</div>
+<br>
+<div id="budDiv" style="display:none;">
+    <form method="post" id="budgetChangeForm" action="/changeBudget/" method="post">
+        <label for="budgetAmount">Enter new Budget</label>
+        <input name="budgetAmount" type="number" step="0.01" min="0" placeholder="Budget"><br>
+        <input type="submit">
+        <br>
+    </form>
+</div>
+<div id="addbudDiv" style="display:none;">
+    <form method="post" id="budgetAddForm" action="/addBudget/" method="post">
+        <label for="budgetAmountToAdd">Enter the Budget</label>
+        <input name="budgetAmountToAdd" step="0.01" min="0" type="number" placeholder="Budget"><br><br>
+        <input type="submit">
+        <br>
+    </form>
+</div>
+<br>
+{% else %}
+You are not logged in.
+<a href="/login">login</a>.
+{%endif%}
+{% endblock content %}
