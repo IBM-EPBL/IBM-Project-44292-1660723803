@@ -1,0 +1,44 @@
+{% extends "newlayout.html" %}
+{% block content %}
+
+<div class="row d-flex justify-content-center align-items-center h-100" style="background-color: rgba(245, 245, 220, 0.748);">
+
+    <div class="col-md-9 col-lg-6 col-xl-5" >
+        <img src="https://cdn-icons-png.flaticon.com/512/4874/4874090.png" style="height:400px;width:400px;" class="img-fluid"
+            alt="Sample image">
+    </div>
+
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form method="post">
+
+            <!-- username input -->
+            <div class="form-outline mb-4">
+                
+                <input required type="username" name="username" class="form-control form-control-lg"
+                    placeholder="Enter username" value="{{ request.form['username'] }}" />
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+                <input required type="password" name="password" class="form-control form-control-lg"
+                    placeholder="Enter password" value="{{ request.form['password'] }}" />
+                
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+                <!-- {% if msg!=" " %}
+                <div class="alert alert-danger" role="alert">
+                    {{ msg }}
+                </div>
+                {% endif %} -->
+                <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                        class="link-danger" style="text-decoration: none;">Register now</a></p>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

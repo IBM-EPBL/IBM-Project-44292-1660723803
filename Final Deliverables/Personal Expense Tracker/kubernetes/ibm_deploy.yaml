@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budgetify
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: budgetify
+  template:
+    metadata:
+      labels:
+        app: budgetify
+
+    spec:
+      containers:
+        - name: budgetify-container
+          image: jp.icr.io/expense-tracker/expense-tracker
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+              protocol: TCP
